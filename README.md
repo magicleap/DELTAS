@@ -14,8 +14,8 @@ We provide the pre-trained weights file for the model trained on ScanNet data. D
 
 ## Dependencies
 * Python 3 >= 3.5
-* PyTorch >= 1.4
-* Torchvision >= 0.5.0
+* PyTorch >= 1.3.1
+* Torchvision >= 0.4.2
 * OpenCV >= 3.4 
 * NumPy >= 1.18
 * Path >= 15.0.0
