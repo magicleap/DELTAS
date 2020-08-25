@@ -21,13 +21,9 @@ parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',help='nu
 parser.add_argument('-b', '--batch-size', default=16, type=int,metavar='N', help='mini-batch size')
 parser.add_argument('--print-freq', default=200, type=int,metavar='N', help='print frequency')
 parser.add_argument('--seed', default=1, type=int, help='seed for random functions, and network initialization')
-
-
 parser.add_argument('--ttype2', default='./assets/sample_data/scannetv2_sample.txt', type=str, help='Text file indicates input data')
-
 parser.add_argument('--mindepth', type=float ,default=0.5, help='minimum depth')
 parser.add_argument('--maxdepth', type=float ,default=10., help='maximum depth')
-
 parser.add_argument('--width', type=int ,default=320, help='image width')
 parser.add_argument('--height', type=int ,default=240, help='image height')
 parser.add_argument('--seq_length', default=3, type=int, help='length of sequence')
@@ -35,8 +31,6 @@ parser.add_argument('--seq_gap', default=20, type=int, help='gap between frames 
 parser.add_argument('--resume', type=bool ,default = True, help='Use pretrained network')
 parser.add_argument('--pretrained', dest='pretrained', default='./assets/pretrained_weights/pretrained_checkpoint.pth.tar', metavar='PATH',
                     help='path to pre-trained model')
-
-
 parser.add_argument('--do_confidence', type=bool ,default = True, help='confidence in triangulation')
 parser.add_argument('--dist_orthogonal', type=int ,default = 1, help='offset distance in pixels')
 parser.add_argument('--kernel_size', type=int ,default = 1, help='kernel size')
@@ -59,10 +53,7 @@ n_iter = 0
 def main():
     global n_iter
     args = parser.parse_args()
-
-
     torch.manual_seed(args.seed)
-
 
     # Data loading code
     print("=> fetching scenes in '{}'".format(args.data))
@@ -83,7 +74,6 @@ def main():
         height = args.height, 
         width = args.width,
     )
-
 
     print('{} samples found in {} valid scenes'.format(len(test_set), len(test_set.scenes)))
 
