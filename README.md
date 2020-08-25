@@ -57,10 +57,11 @@ DATAROOT
 To test the network on the ScanNet test dataset, run:
 
 ```sh
-python test_learnabledepth.py --data [DATAROOT] --seq_length 3 --seq_gap 20
+python test_learnabledepth.py --data [DATAROOT] --ttype2 [Path/scannetv2_test.txt] --seq_length 3 --seq_gap 20
 ```
 
 * The `--data` flag should point to DATAROOT
+* The `--ttype2` flag should point to the file scannetv2_test.txt containing the list of ScanNet test scenes
 * The `--seq_length` flag should indicate the number of frames (default:3)
 * The `--seq_gap` flag should indicate the stride between frames (default:20)
 
