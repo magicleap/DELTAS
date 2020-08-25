@@ -79,7 +79,7 @@ class Superpoint(BaseModel):
         self.pool = torch.nn.MaxPool2d(kernel_size=2, stride=2)
 
     
-        pretrained_features = torchvision.models.resnet50(pretrained=True)
+        pretrained_features = torchvision.models.resnet50(pretrained=False)
         c_out = [2048, 8, 10]
         c_d = 512
         c_k = 64 + 256
