@@ -27,9 +27,9 @@ parser.add_argument('--maxdepth', type=float ,default=10., help='maximum depth')
 parser.add_argument('--width', type=int ,default=320, help='image width')
 parser.add_argument('--height', type=int ,default=240, help='image height')
 parser.add_argument('--seq_length', default=3, type=int, help='length of sequence')
-parser.add_argument('--seq_gap', default=20, type=int, help='gap between frames for ScanNet dataset')
+parser.add_argument('--seq_gap', default=1, type=int, help='gap between frames for ScanNet dataset')
 parser.add_argument('--resume', type=bool ,default = True, help='Use pretrained network')
-parser.add_argument('--pretrained', dest='pretrained', default='./assets/pretrained_weights/pretrained_checkpoint.pth.tar', metavar='PATH',
+parser.add_argument('--pretrained', dest='pretrained', default='./assets/pretrained_checkpoint.pth.tar', metavar='PATH',
                     help='path to pre-trained model')
 parser.add_argument('--do_confidence', type=bool ,default = True, help='confidence in triangulation')
 parser.add_argument('--dist_orthogonal', type=int ,default = 1, help='offset distance in pixels')
@@ -236,7 +236,7 @@ def validate_with_gt(args, val_loader, supernet, trinet, depthnet, val_set=None)
             output = output.squeeze(1)
             errors_depth.update(compute_errors(tgt_depth_tiled, output, mask, False))
             if i % int(0.5*args.print_freq) == 0:
-                print(' valid: DEPTH Error {:.4f} ({:.4f})'.format(errors_depth.avg[1], errors_depth.avg[0]))
+                print(' TEST: Depth Error {:.4f} ({:.4f})'.format(errors_depth.avg[1], errors_depth.avg[0]))
         
     return errors_depth.avg, error_names
 
