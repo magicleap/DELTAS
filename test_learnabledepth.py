@@ -13,8 +13,6 @@ from assets.utils import *
 parser = argparse.ArgumentParser(description='Structure from Motion Learner training on KITTI and CityScapes Dataset',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-# parser.add_argument('--data', default='/thirdeye-nfs/projects/general/public_datasets/raw/scannet', type=str, metavar='DIR',
-#                     help='path to dataset')
 parser.add_argument('--data', default='./assets/sample_data/scannet_sample', type=str, metavar='DIR',
                     help='path to dataset')
 parser.add_argument('--dataset-format', default='sequential', metavar='STR',
