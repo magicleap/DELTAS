@@ -47,7 +47,7 @@ class SequenceFolder(torch.utils.data.Dataset):
         sequence_set = []
         isc = 0
         for scene in self.scenes:
-            print(isc, len(self.scenes))
+            #print(isc, len(self.scenes))
             isc+=1
             frames = os.listdir(os.path.join(scene, "color"))
             frames = [int(os.path.splitext(frame)[0]) for frame in frames]
