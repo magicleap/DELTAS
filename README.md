@@ -70,7 +70,7 @@ The arguments in the python file have an associated description.
 ## Citation
 
 ```
-@inproceedings{murez2020atlas,
+@inproceedings{sinha2020deltas,
   title={DELTAS: Depth Estimation by Learning Triangulation And densification of Sparse points},
   author={Ayan Sinha and
   	 Zak Murez and 
