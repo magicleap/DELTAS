@@ -35,7 +35,7 @@ You should get the following output (or something very close to it)
 => creating model
  TEST: Depth Error 0.1389 (0.0747)
 ```
-
+Here 0.1389 is the mean absolute error (MAE) in meters and 0.0747 is the relative error. 
 
 ### Test the network on ScanNet data
 
