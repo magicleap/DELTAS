@@ -99,7 +99,7 @@ def main():
     cudnn.benchmark = True
 
     supernet = superpoint.Superpoint(config_sp)
-    supernet = supernet.cuda() if args.resume else torch.nn.DataParallel(supernet).cuda()
+    supernet = supernet.cuda() if torch.cuda.is_available()
 
     #step 2 using differentiable triangulation
     config_tri = {
@@ -113,7 +113,7 @@ def main():
 
 
     trinet = triangulation.TriangulationNet(config_tri)
-    trinet = trinet.cuda() if args.resume else torch.nn.DataParallel(trinet).cuda()
+    trinet = trinet.cuda() if torch.cuda.is_available()
 
     #step 3 using sparse-to-dense
 
@@ -124,18 +124,22 @@ def main():
     }
 
     depthnet = densedepth.SparsetoDenseNet(config_depth)
-    depthnet = depthnet.cuda() if args.resume else torch.nn.DataParallel(depthnet).cuda()
+    depthnet = depthnet.cuda() if torch.cuda.is_available()
 
     #load pre-trained weights
 
     if args.resume:
-        weights = torch.load(args.pretrained)
+        if torch.cuda.is_available(): 
+          weights = torch.load(args.pretrained)
+        else:
+          weights = torch.load(args.pretrained, map_location=torch.device('cpu'))
         supernet.load_state_dict(weights['state_dict'], strict = True)
         trinet.load_state_dict(weights['state_dict_tri'], strict = True)
         depthnet.load_state_dict(weights['state_dict_depth'], strict = True)
-        depthnet = torch.nn.DataParallel(depthnet).cuda()
-        supernet = torch.nn.DataParallel(supernet).cuda()
-        trinet = torch.nn.DataParallel(trinet).cuda()
+        if torch.cuda.is_available():
+          depthnet = torch.nn.DataParallel(depthnet).cuda()
+          supernet = torch.nn.DataParallel(supernet).cuda()
+          trinet = torch.nn.DataParallel(trinet).cuda()
         
 
     errors_depth, error_names = validate_with_gt(args, test_loader, supernet, trinet, depthnet, test_set)
