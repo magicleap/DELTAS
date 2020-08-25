@@ -476,7 +476,7 @@ class TriangulationNet(BaseModel):
 
         ## Sample
         desc_views_shp = desc_views.shape
-        desc_views = desc_views.view(desc_views_shp[0]*desc_views_shp[1],desc_views_shp[2],desc_views_shp[3],desc_views_shp[4])
+        desc_views = desc_views.reshape(desc_views_shp[0]*desc_views_shp[1],desc_views_shp[2],desc_views_shp[3],desc_views_shp[4])
         descriptor_at_image = sample_descriptors_epi(kp_image.detach(),desc_views, st, True,self.config['align_corners']) 
         descriptor_at_anchor = sample_descriptors_epi(kp_anchor.detach(), desc.repeat_interleave(sequence_length,dim=0), st, True,self.config['align_corners'])
 
@@ -575,7 +575,9 @@ class TriangulationNet(BaseModel):
 
         projection_mat =[]
         projection_ref =[]
-        proj_identity = torch.tensor([[1.,0.,0.,0.],[0.,1.,0.,0.],[0.,0.,1.,0.]]).cuda()
+        proj_identity = torch.tensor([[1.,0.,0.,0.],[0.,1.,0.,0.],[0.,0.,1.,0.]])
+        if torch.cuda.is_available():
+            proj_identity = proj_identity.cuda()
 
         
         for batch_idx in range(pose_tiled.size(0)): 
