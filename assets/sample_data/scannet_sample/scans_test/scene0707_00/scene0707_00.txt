@@ -1,0 +1,15 @@
+colorHeight = 968
+colorToDepthExtrinsics = 0.999263 -0.010031 0.037048 -0.038549 0.009933 0.999947 0.002817 -0.004287 -0.037074 -0.002447 0.999310 -0.020574 -0.000000 0.000000 -0.000000 1.000000
+colorWidth = 1296
+depthHeight = 480
+depthWidth = 640
+fx_color = 1170.187988
+fx_depth = 570.924255
+fy_color = 1170.187988
+fy_depth = 570.924316
+mx_color = 647.750000
+mx_depth = 319.500000
+my_color = 483.750000
+my_depth = 239.500000
+numColorFrames = 5
+numDepthFrames = 5
