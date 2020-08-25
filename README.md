@@ -20,7 +20,7 @@ We provide the pre-trained weights file for the model trained on ScanNet data. D
 * NumPy >= 1.18
 * Path >= 15.0.0
 
-Simply run the following command: `pip install numpy opencv-python path torch torchvision`. You need a modern GPU to run the inference code. 
+Simply run the following command: `pip install numpy opencv-python path torch torchvision`. You need a modern GPU to run the inference code in a reasonable time. The code supports running the network without a GPU, albeit with slight degradation in performance. 
 
 ### Run the network on sample ScanNet data
 
