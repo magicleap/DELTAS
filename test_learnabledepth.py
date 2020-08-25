@@ -99,7 +99,7 @@ def main():
     cudnn.benchmark = True
 
     supernet = superpoint.Superpoint(config_sp)
-    supernet = supernet.cuda() if torch.cuda.is_available()
+    supernet = supernet.cuda() if torch.cuda.is_available() else supernet
 
     #step 2 using differentiable triangulation
     config_tri = {
@@ -113,7 +113,7 @@ def main():
 
 
     trinet = triangulation.TriangulationNet(config_tri)
-    trinet = trinet.cuda() if torch.cuda.is_available()
+    trinet = trinet.cuda() if torch.cuda.is_available() else trinet
 
     #step 3 using sparse-to-dense
 
@@ -124,7 +124,7 @@ def main():
     }
 
     depthnet = densedepth.SparsetoDenseNet(config_depth)
-    depthnet = depthnet.cuda() if torch.cuda.is_available()
+    depthnet = depthnet.cuda() if torch.cuda.is_available() else depthnet
 
     #load pre-trained weights
 
